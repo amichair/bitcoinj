@@ -475,12 +475,12 @@ public class TransactionInput extends ChildMessage implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionInput other = (TransactionInput) o;
-        return sequence == other.sequence && parent == other.parent
+        return sequence == other.sequence && Objects.equal(parent, other.parent)
             && outpoint.equals(other.outpoint) && Arrays.equals(scriptBytes, other.scriptBytes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(sequence, outpoint, Arrays.hashCode(scriptBytes));
+        return Objects.hashCode(sequence, parent, outpoint, Arrays.hashCode(scriptBytes));
     }
 }

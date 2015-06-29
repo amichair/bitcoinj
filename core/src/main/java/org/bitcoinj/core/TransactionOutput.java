@@ -19,6 +19,7 @@ package org.bitcoinj.core;
 
 import com.google.common.base.Objects;
 import org.bitcoinj.script.*;
+import com.google.common.base.Objects;
 import org.slf4j.*;
 
 import javax.annotation.*;
@@ -431,7 +432,7 @@ public class TransactionOutput extends ChildMessage implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionOutput other = (TransactionOutput) o;
-        return value == other.value && (parent == null || parent == other.parent)
+        return value == other.value && Objects.equal(parent, other.parent)
             && Arrays.equals(scriptBytes, other.scriptBytes);
     }
 
